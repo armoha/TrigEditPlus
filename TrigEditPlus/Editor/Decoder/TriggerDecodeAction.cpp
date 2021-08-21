@@ -66,7 +66,7 @@ void TriggerEditor::DecodeAction(lua_State* L, StringBuffer& buf, const TrigAct&
 			uint16_t maskprop = content.maskflag;
 			if(
 				(player >= 28 && unitid < 228) ||  // EPD Action
-				(player < 12 && unitid >= 228)  // EUD Action
+				(player < 12 && unitid >= 233)  // EUD Action
 			) {
 				uint32_t number = content.target;
 				uint32_t offset = 0x58A364 + 4 * player + 48 * unitid;
