@@ -57,6 +57,7 @@ void TriggerEditor::DecodeAction(lua_State* L, StringBuffer& buf, const TrigAct&
 
 	else {
 		int acttype = content.acttype;
+		bool firstfield = true;
 		TriggerStatementDecl &decl = ActionFields[acttype - 1];
 
 		if(acttype == SETDEATHS)
@@ -98,8 +99,6 @@ void TriggerEditor::DecodeAction(lua_State* L, StringBuffer& buf, const TrigAct&
 
 		buf << decl.stmt_name << "(";
 
-		bool firstfield = true;
-
 		for(int i = 0 ; decl.fields[i].Type != 0 ; i++) {
 			// Get value
 			int value;
@@ -140,7 +139,7 @@ void TriggerEditor::DecodeAction(lua_State* L, StringBuffer& buf, const TrigAct&
 				{
 					if(value == 0 || value > 64) str = DecodeNumber(value);
 					else {
-						UPRPData* uprp = &((UPRPData*)_editordata->UnitProperties->ChunkData)[value - 1];
+						const UPRPData* uprp = &((UPRPData*)_editordata->UnitProperties->ChunkData)[value - 1];
 						str = DecodeUPRPData(uprp); break;
 					}
 				}

@@ -35,7 +35,7 @@ void ApplyEditorStyle(TriggerEditor* te) {
 	te->SendSciMessage(SCI_SETKEYWORDS, 0, (LPARAM)luaKeywords);
 
 	// Korean thing
-	te->SendSciMessage(SCI_SETCODEPAGE, 949, 0);
+	te->SendSciMessage(SCI_SETCODEPAGE, 65001, 0);
 
 	// Multiple selection
 	te->SendSciMessage(SCI_SETMULTIPLESELECTION, 1, 0);

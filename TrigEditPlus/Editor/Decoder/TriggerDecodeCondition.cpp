@@ -51,6 +51,7 @@ void TriggerEditor::DecodeCondition(lua_State* L, StringBuffer& buf, const TrigC
 	}
 	else {
 		int condtype = content.condtype;
+		bool firstfield = true;
 		TriggerStatementDecl &decl = ConditionFields[condtype - 1];
 
 		if(condtype == DEATHS)
@@ -91,8 +92,6 @@ void TriggerEditor::DecodeCondition(lua_State* L, StringBuffer& buf, const TrigC
 		}
 
 		buf << decl.stmt_name << "(";
-	
-		bool firstfield = true;
 
 		for(int i = 0 ; decl.fields[i].Type != 0 ; i++) {
 			// Get value
